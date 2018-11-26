@@ -1,0 +1,22 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="eventType" type="String" />
+    <aura:attribute name="messageFromEvent" type="String" />
+
+    <!-- Handler for Init event sent automatically on component initialization -->
+    <aura:handler name="init" value="{!this}" action="{!c.handleEvent}" />
+
+    <!-- Handler for Component event -->
+    <aura:handler name="componentEvent" event="c:Component_Event" action="{!c.handleEvent}" />
+
+    <!-- Handler for Application event -->
+    <aura:handler event="c:Application_Event" action="{!c.handleEvent}" />
+
+    <div class="slds-box">
+        <lightning:formattedText class="slds-text-heading_large" value="Event handler" />
+        <p class="slds-p-top_medium slds-p-left_medium">I've got "{!v.eventType}" event with message: {!v.messageFromEvent}</p>
+
+        <div class="slds-m-top_x-large">
+            <c:Component_Event_Emitter/>
+        </div>
+    </div>
+</aura:component>
